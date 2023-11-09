@@ -6,6 +6,11 @@
 
 <b>With docker : </b>
 
+Rename/duplicate **.env_sample** to **.env**
+
+`cp .env_sample .env`
+
+
 In the project repertory
 ```bash
 docker-compose up

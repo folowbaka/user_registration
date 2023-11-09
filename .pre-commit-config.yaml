@@ -1,0 +1,40 @@
+# All repos from which hooks will be done
+repos:
+# Since isort, black, pylint are configured here we used our configurated tools
+# If we use the one from the repos we will need to configure them
+# pre-commit documentation: https://pre-commit.com/#repository-local-hooks
+-  repo: local
+   hooks:
+   - id: isort
+     name: isort
+     entry: poetry run isort --profile black
+     language: system
+     types: [python]
+
+   - id: black
+     name: black
+     entry: poetry run black
+     language: system
+     types: [python]
+
+   - id: pylint
+     name: pylint
+     entry: poetry run pylint
+     language: system
+     types: [python]
+
+
+- repo: git://github.com/pre-commit/pre-commit-hooks
+  rev: v4.3.0  # Get the latest from: https://github.com/pre-commit/pre-commit-hooks/releases
+  hooks:
+   - id: trailing-whitespace
+
+
+# INFRA PRE-COMMIT
+- repo: git://github.com/antonbabenko/pre-commit-terraform
+  rev: v1.73.0 # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
+  hooks:
+    - id: terraform_fmt
+      name: Check terraform files
+    - id: terragrunt_fmt
+      name: Check terragrunt files

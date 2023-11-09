@@ -1,0 +1,22 @@
+version: "3.3"
+services:
+  db_test:
+    image: postgres:16
+    volumes:
+      - ./db-pgdata:/var/lib/postgresql/data
+      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    env_file:
+      - .env
+    ports:
+      - "6543:5432"
+
+  user_registration_test:
+    image: "user_registration_test"
+    depends_on:
+      - db_test
+    env_file:
+      - .env
+    build:
+      dockerfile: test-Dockerfile
+    ports:
+      - "9050:9000"

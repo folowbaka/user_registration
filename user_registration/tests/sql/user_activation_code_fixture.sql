@@ -1,0 +1,1 @@
+INSERT INTO user_activation_codes (code, user_id, creation_date) VALUES ('6666', 1, '2019-01-01');

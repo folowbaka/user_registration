@@ -1,0 +1,13 @@
+# Python files
+*.pyc
+__pycache__/
+*.egg-info/
+.mypy*
+# Virtualenv files
+.venv
+venv/
+# Dev tools
+/.idea
+/.vscode
+# Coverage
+*coverage*
